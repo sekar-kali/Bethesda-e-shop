@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Suivi de commande #{{ orderId }}</h1>
+
+  <div *ngIf="order() as o" class="order-card">
+    <p class="status" [ngClass]="o.status.toLowerCase()">
+      {{ statusLabels[o.status] || o.status }}
+    </p>
+
+    <ul>
+      <li *ngFor="let item of o.items">
+        {{ item.quantity }} × {{ item.productName }} — {{ item.unitPrice | number: '1.2-2' }} €
+      </li>
+    </ul>
+
+    <p class="total">Total : <strong>{{ o.totalAmount | number: '1.2-2' }} €</strong></p>
+
+    <button *ngIf="o.status === 'CONFIRMED'" (click)="pay()">Payer la commande</button>
+
+    <p class="hint">
+      Cette page se met à jour automatiquement via WebSocket dès que le statut change côté serveur.
+    </p>
+  </div>
+
+  <p *ngIf="!order()">Chargement de la commande…</p>
+</div>

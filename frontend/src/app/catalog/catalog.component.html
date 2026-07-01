@@ -1,0 +1,29 @@
+<div class="container">
+  <header class="hero">
+    <h1>Bethesda E-Shop</h1>
+    <p>Épices, thés, textiles et artisanat d'Inde — sélectionnés avec soin.</p>
+  </header>
+
+  <p *ngIf="loading()">Chargement du catalogue…</p>
+  <p *ngIf="error()" class="error">{{ error() }}</p>
+
+  <section *ngFor="let category of categories()">
+    <h2>{{ categoryLabels[category] || category }}</h2>
+    <div class="grid">
+      <article class="card" *ngFor="let product of productsFor(category)">
+        <h3>{{ product.name }}</h3>
+        <p class="origin">{{ product.origin }}</p>
+        <p class="description">{{ product.description }}</p>
+        <div class="footer">
+          <span class="price">{{ product.price | number: '1.2-2' }} €</span>
+          <span class="stock" [class.low]="product.stockQuantity < 20">
+            {{ product.stockQuantity }} en stock
+          </span>
+        </div>
+        <button (click)="addToCart(product)" [disabled]="product.stockQuantity === 0">
+          Ajouter au panier
+        </button>
+      </article>
+    </div>
+  </section>
+</div>

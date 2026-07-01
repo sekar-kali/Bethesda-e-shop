@@ -1,0 +1,33 @@
+nav {
+  background: #b3541e;
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+}
+
+.brand {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.cart-link {
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+
+.badge {
+  background: white;
+  color: #b3541e;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-left: 6px;
+}

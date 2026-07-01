@@ -1,0 +1,11 @@
+<nav>
+  <div class="container nav-inner">
+    <a routerLink="/" class="brand">Bethesda E-Shop</a>
+    <a routerLink="/cart" class="cart-link">
+      Panier
+      <span class="badge" *ngIf="cartService.itemCount() > 0">{{ cartService.itemCount() }}</span>
+    </a>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
